@@ -2,5 +2,5 @@
 def delete_at(my_list=[], idx=0):
     if idx not in range(0, len(my_list)):
         return my_list
-    my_list = my_list[:idx] + my_list[idx + 1:]
+    del my_list[idx]
     return my_list

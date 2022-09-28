@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    bestscore = max(a_dictionary)
-    if not bestscore:
+    name = ""
+    score = 0
+    if not a_dictionary:
         return None
-    return bestscore
+    else:
+        for key in a_dictionary:
+            if a_dictionary[key] > score:
+                score = a_dictionary[key]
+                name = key
+    return name

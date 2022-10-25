@@ -17,14 +17,23 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    l = [[0 for x in range(i + 1)] for i in range(n)]
-    l[0] = [1]
+    limit = n - 1
+    triangle = [[1]]
 
-    for i in range(1, n):
-        l[i][0] = 1
-        for j in range(1, i + 1):
-            if j < len(l[i - 1]):
-                l[i][j] = l[i - 1][j - 1] + l[i - 1][j]
-            else:
-                l[i][j] = l[i - 1][0]
-    return l
+    for i in range(limit):
+        row = []
+        row.append(1)
+
+        if len(triangle[i]) > 1:
+            prev_row_len = len(triangle[i]) - 1
+            nxt = 1
+
+            for j in range(prev_row_len):
+                suma = triangle[i][j] + triangle[i][nxt]
+                row.append(suma)
+                nxt += 1
+
+        row.append(1)
+        triangle.append(row)
+
+    return triangle
